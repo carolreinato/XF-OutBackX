@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:OutBackX.ViewModel"
+    xmlns:local="clr-namespace:OutBackX.View"
+    x:Class="OutBackX.View.EstabelecimentoPage"
+    BackgroundColor="Black" 
+    NavigationPage.HasNavigationBar="False">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="DarkRed" BackgroundImageSource="outbackLogo02.png">
+            <!-- Menu Title background color -->
+            <!-- Slide out Menu -->
+            <Grid VerticalOptions="FillAndExpand" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="9*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       Margin="0, 0, 0, -30"
+                       Source="outbackLogo02p.png"
+                       />
+                <ListView Grid.Row="1" 
+                          x:Name="MenuListView" 
+                          ItemsSource="{Binding MainMenuItems}" 
+                          ItemSelected="MainMenuItem_Selected" 
+                          VerticalOptions="FillAndExpand" 
+                          SeparatorVisibility="None" 
+                          HasUnevenRows="true" 
+                          BackgroundColor="IndianRed">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell Text="{Binding Title}"
+                                       ImageSource="{Binding Icon}"
+                                       Height="60"
+                                       TextColor="Black"
+                                       />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:OutBackX.ViewModel"
+    xmlns:ut="clr-namespace:OutBackX.Util"
+    x:Class="OutBackX.View.EstabelecimentoAtualizarPage"
+    BackgroundColor="White"
+    Title="Atualizar">
+
+    <ContentPage.BindingContext>
+        <vm:EstabelecimentoCrudViewModel></vm:EstabelecimentoCrudViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="PlaceholderColor" Value="LightGray"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="CadetBlue"/>
+            <Setter Property="FontSize" Value="Subtitle"/>
+            <Setter Property="VerticalTextAlignment" Value="End"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="pesquisaEstabelecimento" IsVisible="True">
+                <SearchBar x:Name="SearchBar"
+                       WidthRequest="1"
+                       TextColor="Black"
+                       Placeholder="Digite uma palavra para a pesquisar"
+                       SearchCommand="{Binding SearchCommand}" 
+                       SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+                       PlaceholderColor="LightGray"                           
+                       >
+                    <SearchBar.Behaviors>
+                        <vm:TextChangedBehavior/>
+                    </SearchBar.Behaviors>
+                </SearchBar>
+            
+                <ListView x:Name="listView" 
+                      HasUnevenRows="True"           
+                      SeparatorColor="Black"
+                      IsPullToRefreshEnabled="True"
+                      ItemsSource="{Binding EstabelecimentoList}"
+                      SelectedItem="{Binding SelectedEstabelecimento, Mode=TwoWay}" Margin="5">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="20"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Grid.Row="0" FontAttributes="Bold" Text="Nome: " />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{Binding NomeEstabelecimento}" />
+                                        <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="End: "/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding EnderecoEstabelecimento}" />
+                                        <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Cidade: "/>
+                                        <Label Grid.Column="1" Grid.Row="2" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding EstadoEstabelecimento }"/>
+                                                    <Span Text=" - "/>
+                                                    <Span Text="{Binding CidadeEstabelecimento }"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            
+            <StackLayout x:Name="dadosEstabelecimento" IsVisible="False">
+                <Grid ColumnSpacing="5" RowSpacing="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Nome do Estabelecimento:*" Grid.Row="0" Grid.Column="0"/>
+                <Entry x:Name="nomeEstabelecimento" Placeholder="Ex: Padaria Pão Doce" Text="{Binding Estabelecimento.NomeEstabelecimento}" Grid.Row="1" Grid.Column="0"/>
+
+                <Label Text="CEP:*" Grid.Row="0" Grid.Column="1"/>
+                <Entry x:Name="cepEstabelecimento" Placeholder="Ex: 05024-000" Text="{Binding Estabelecimento.CEPEstabelecimento}" Grid.Row="1" Grid.Column="1" Keyboard="Numeric">
+                    <Entry.Behaviors>
+                        <ut:MaskedBehavior  Mask="XXXXX-XXX" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Label Text="Endereço:*" Grid.Row="2" Grid.Column="0"/>
+                <Entry x:Name="enderecoEstabelecimento" Placeholder="Ex: Rua Barão do Bananal, 1500" Text="{Binding Estabelecimento.EnderecoEstabelecimento}" Grid.Row="3" Grid.Column="0"/>
+
+                <Label Text="Estado:*" Grid.Row="2" Grid.Column="1"/>
+                <Entry x:Name="estadoEstabelecimento" Placeholder="Ex: SP" Text="{Binding Estabelecimento.EstadoEstabelecimento}" MaxLength="2" Grid.Row="3" Grid.Column="1"/>
+
+                <Label Text="Bairro:*" Grid.Row="4" Grid.Column="0"/>
+                <Entry x:Name="bairroEstabelecimento" Placeholder="Ex: Pompeia" Text="{Binding Estabelecimento.BairroEstabelecimento}" Grid.Row="5" Grid.Column="0"/>
+
+                <Label Text="Cidade:*" Grid.Row="4" Grid.Column="1"/>
+                <Entry x:Name="cidadeEstabelecimento" Placeholder="Ex: São Paulo" Text="{Binding Estabelecimento.CidadeEstabelecimento}" Grid.Row="5" Grid.Column="1"/>
+
+                <Label Text="(opcional) CoordenadaX:" Grid.Row="6" Grid.Column="0"/>
+                <Entry x:Name="coordenadaXEstabelecimento" Placeholder="Ex: 254,6986" Text="{Binding Estabelecimento.CoordenadaX}" Keyboard="Numeric" Grid.Row="7" Grid.Column="0"/>
+
+                <Label Text="(opcional) CoordenadaY:" Grid.Row="6" Grid.Column="1"/>
+                <Entry x:Name="coordenadaYEstabelecimento" Placeholder="Ex: 31,2557" Text="{Binding Estabelecimento.CoordenadaY}" Keyboard="Numeric" Grid.Row="7" Grid.Column="1"/>
+
+                <Label Text="(opcional) Nivel Lotação:" Grid.Row="8" Grid.Column="0"/>
+                <Picker x:Name="nivelLotacao" Title="Opções" SelectedItem="{Binding Estabelecimento.NivelLotacao, Mode=TwoWay}" FontSize="Small" Grid.Row="9" Grid.Column="0" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Vazio</x:String>
+                        <x:String>Intermediario</x:String>
+                        <x:String>Cheio</x:String>
+                    </Picker.Items>
+                </Picker>
+                </Grid>
+            <StackLayout>
+                    <Button Text="Salvar" Command="{Binding AtualizarClickedCommand}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="200" CornerRadius="10" BackgroundColor="CornflowerBlue" TextColor="WhiteSmoke"/>
+            </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

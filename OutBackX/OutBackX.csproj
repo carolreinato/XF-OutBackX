@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Resource\**" />
+    <EmbeddedResource Remove="Resource\**" />
+    <None Remove="Resource\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Config.cs" />
+    <Compile Remove="View\EstabelecimentoCadastrarPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\EstabelecimentoCadastrarPage.xaml.cs">
+      <DependentUpon>EstabelecimentoCadastrarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\UsuarioPage.xaml.cs">
+      <DependentUpon>UsuarioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\EstabelecimentoUsuarioPage.xaml.cs">
+      <DependentUpon>EstabelecimentoUsuarioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\EstabelecimentoExcluirPage.xaml.cs">
+      <DependentUpon>EstabelecimentoExcluirPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\EstabelecimentoAtualizarPage.xaml.cs">
+      <DependentUpon>EstabelecimentoAtualizarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\UsuarioEstabelecimentoFavoritoListarPage.xaml.cs">
+      <DependentUpon>UsuarioEstabelecimentoFavoritoListarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\FuncionarioCadastrarPage.xaml.cs">
+      <DependentUpon>FuncionarioCadastrarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\FuncionarioEntrarPage.xaml.cs">
+      <DependentUpon>FuncionarioEntrarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="View\EstabelecimentoListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\EstabelecimentoMapaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\EstabelecimentoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\UsuarioEstabelecimentoFavoritoListarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

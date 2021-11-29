@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    x:Name="EstabListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:OutBackX.ViewModel"
+    x:Class="OutBackX.View.EstabelecimentoListPage"
+    Title="Estabelecimentos"
+    BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:EstabelecimentoListViewModel></vm:EstabelecimentoListViewModel>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <SearchBar x:Name="SearchBar"
+                   WidthRequest="1"
+                   TextColor="Black"
+                   Placeholder="Digite uma palavra para a pesquisar"
+                   SearchCommand="{Binding SearchCommand}" 
+                   SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}">
+            <SearchBar.Behaviors>
+                <vm:TextChangedBehavior/>
+            </SearchBar.Behaviors>
+        </SearchBar>
+        <ListView x:Name="listView" 
+                  HasUnevenRows="True"           
+                  SeparatorColor="Black"
+                  IsPullToRefreshEnabled="True"
+                  ItemsSource="{Binding EstabelecimentoList}"
+                  SelectedItem="{Binding SelectedEstabelecimento, Mode=TwoWay}" 
+                  Margin="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Grid HorizontalOptions="StartAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="20"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Grid.Row="0" TextColor="Black" FontAttributes="Bold"
+                                       Text="Nome: " />
+                                <Label Grid.Column="1" Grid.Row="0" TextColor="Black"
+                                       Text="{Binding NomeEstabelecimento}" />                                
+                                <Label Grid.Column="0" Grid.Row="1" TextColor="Black" FontAttributes="Bold"
+                                       Text="End: "/>
+                                <Label Grid.Column="1" Grid.Row="1" TextColor="Black" 
+                                       Text="{Binding EnderecoEstabelecimento}" />
+                                <Label Grid.Column="0" Grid.Row="2" TextColor="Black" FontAttributes="Bold"
+                                       Text="Cidade: "/>
+                                <Label Grid.Column="1" Grid.Row="2" TextColor="Black" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding EstadoEstabelecimento }"/>
+                                            <Span Text=" - "/>
+                                            <Span Text="{Binding CidadeEstabelecimento }"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Image Grid.Column="2" Grid.Row="2"  Source="center.png" x:Name="LocalImage" Aspect="AspectFit" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.ShowMapCommand, Source={x:Reference Name=EstabListPage}}" CommandParameter="{Binding .}"  />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>        
+    </StackLayout>
+</ContentPage>

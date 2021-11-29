@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:vm="clr-namespace:OutBackX.ViewModel"
+            xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+            x:Class="OutBackX.View.EstabelecimentoMapaPage">
+
+    <ContentPage.BindingContext>
+        <vm:EstabelecimentoMapaViewModel></vm:EstabelecimentoMapaViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Icon="Microsoft.png" Text="Ajuste Aproximação" Priority="0"  Command="{Binding EditAproximacaoCommand}"/>
+        <ToolbarItem Order="Secondary" Icon="Xamarin.png" Text="Centralizar" Priority="1" Command="{Binding CentralizarMapaCommand}"/>
+        <ToolbarItem Order="Secondary" Icon="Xamarin.png" Text="Mostrar Estabelecimentos" Priority="2"  Command="{Binding MostrarEstabelecimentosCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="5" >
+
+            <StackLayout >
+                <SearchBar x:Name="seachBarEndereco" 
+                    Placeholder="Endereço"
+                    SearchCommand="{Binding SearchCommand}"
+                    SearchCommandParameter="{Binding Text, Source={x:Reference seachBarEndereco}}"
+                    FontSize="Small" />
+            </StackLayout>
+
+            <maps:Map x:Name="LayoutMap"  MapType="Street" 
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" >
+                <Button Text="Adicionar" IsEnabled="{Binding ShowShare}"  Command="{Binding AdicionarFavoritosCommand}" CornerRadius="10" BackgroundColor="CornflowerBlue" TextColor="WhiteSmoke"/>
+                <Button Text="Compartilhar" IsEnabled="{Binding ShowShare}"  Command="{Binding CompartilharCommand}" CornerRadius="10" BackgroundColor="CornflowerBlue" TextColor="WhiteSmoke"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

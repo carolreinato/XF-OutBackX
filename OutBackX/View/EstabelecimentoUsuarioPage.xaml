@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:OutBackX.ViewModel"
+    xmlns:ut="clr-namespace:OutBackX.Util"
+    x:Class="OutBackX.View.EstabelecimentoUsuarioPage"
+    BackgroundImage="outback01.jpg">
+
+    <ContentPage.BindingContext>
+        <vm:EstabelecimentoCrudViewModel></vm:EstabelecimentoCrudViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="PlaceholderColor" Value="Black"/>           
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Start"  Margin="10">
+
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" >
+                <Button Text="Salvar" Command="{Binding SalvarClickedCommand}"  HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding CanSave}" />
+                <Button Text="Excluir" Command="{Binding ExcluirClickedCommand}"  HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding CanDelete}" />
+                <Button Text="Adicionar a Favoritos" Command="{Binding AddFavoritosClickedCommand}"  HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding IsUsuario}" />
+            </StackLayout>
+            <ScrollView >
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start">
+
+                    <Label Text="*Nome do Estabelecimento:" FontSize="Small" />
+                    <Entry Placeholder="Ex: Padaria Pão Doce" Text="{Binding Estabelecimento.NomeEstabelecimento}" FontSize="Small" IsEnabled="{Binding IsFuncionario}"  />
+
+                    <Label Text="*CEP:" FontSize="Small" />
+                    <Entry Placeholder="Ex: 05024-000" Text="{Binding Estabelecimento.CEPEstabelecimento}" FontSize="Small"  HorizontalOptions="Start" Keyboard="Numeric" IsEnabled="{Binding IsFuncionario}" >
+                        <Entry.Behaviors>
+                            <ut:MaskedBehavior  Mask="XXXXX-XXX" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label Text="*Endereço:" FontSize="Small" />
+                    <Entry Placeholder="Ex: Rua Barão do Bananal, 1500" Text="{Binding Estabelecimento.EnderecoEstabelecimento}" FontSize="Small" HorizontalOptions="StartAndExpand" IsEnabled="{Binding IsFuncionario}"  />
+    
+                    <Label Text="*Bairro:" FontSize="Small" />
+                    <Entry Placeholder="Ex: Pompeia" Text="{Binding Estabelecimento.BairroEstabelecimento}" FontSize="Small" IsEnabled="{Binding IsFuncionario}" />
+
+                    <Label Text="*Cidade:" FontSize="Small" />
+                    <Entry Placeholder="Ex: São Paulo" Text="{Binding Estabelecimento.CidadeEstabelecimento}" FontSize="Small" IsEnabled="{Binding IsFuncionario}" />
+                
+                    <Label Text="*Estado:" FontSize="Small" />
+                    <Entry Placeholder="Ex: SP" Text="{Binding Estabelecimento.EstadoEstabelecimento}" FontSize="Small"  MaxLength="2" IsEnabled="{Binding IsFuncionario}" />
+
+                    <Label Text="(opcional) CoordenadaX:" FontSize="Small"/>
+                    <Entry Placeholder="Ex: 254,6986" Text="{Binding Estabelecimento.CoordenadaX}" FontSize="Small" Keyboard="Numeric" IsEnabled="{Binding IsFuncionario}" />
+
+                    <Label Text="(opcional) CoordenadaY:" FontSize="Small"/>
+                    <Entry Placeholder="Ex: 31,2557" Text="{Binding Estabelecimento.CoordenadaY}" FontSize="Small" Keyboard="Numeric" IsEnabled="{Binding IsFuncionario}" />
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:OutBackX.ViewModel"
+    x:Class="OutBackX.View.FuncionarioCadastrarPage"
+    BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:FuncionarioViewModel></vm:FuncionarioViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="Subtitle"/>
+            <Setter Property="WidthRequest" Value="200"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="CadetBlue"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand"  Padding="30" Spacing="10">
+            <Label Text="Nome:">
+            </Label>
+            <Entry Text="{Binding Funcionario.NomeFuncionario}">
+            </Entry>
+            <Label Text="CPF:">
+            </Label>
+            <Entry Text="{Binding Funcionario.CpfFuncionario}">
+            </Entry>
+            <Label Text="e-mail:">
+            </Label>
+            <Entry Text="{Binding Funcionario.EmailFuncionario}">
+            </Entry>
+            <Label Text="Senha:">
+            </Label>
+            <Entry Text="{Binding Funcionario.SenhaFuncionario}">
+            </Entry>
+            <Button Text="Salvar" Command="{Binding SalvarClickedCommand}" CornerRadius="10" BackgroundColor="CornflowerBlue" TextColor="WhiteSmoke"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="OutBackX.View.StartPage"  
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"          
+             >    
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="WidthRequest" Value="150"/>
+        </Style>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BackgroundColor" Value="Black"/>
+            <Setter Property="BarBackgroundColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content >
+        <StackLayout BackgroundColor="DarkRed">
+            <Image Source="outbackLogo02m.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <StackLayout VerticalOptions="End" Padding="15" Orientation="Horizontal">
+                <Button Text="Sou funcionário" HorizontalOptions="StartAndExpand" 
+                        Pressed="PressedFuncionario" 
+                        CornerRadius="10" 
+                        BackgroundColor="CornflowerBlue" 
+                        TextColor="WhiteSmoke"/>
+                <Button Text="Não sou funcionário" 
+                        HorizontalOptions="End" 
+                        Pressed="PressedNaoFuncionario" 
+                        CornerRadius="10" 
+                        BackgroundColor="CornflowerBlue" 
+                        TextColor="WhiteSmoke"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+   
+</ContentPage>

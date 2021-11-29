@@ -8,7 +8,7 @@
     Title="Meus Favoritos">
 
     <ContentPage.BindingContext>
-        <vm:EstabelecimentoCrudViewModel></vm:EstabelecimentoCrudViewModel>
+        <vm:FavoritoUsuarioListViewModel></vm:FavoritoUsuarioListViewModel>
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -44,8 +44,8 @@
                       HasUnevenRows="True"           
                       SeparatorColor="Black"
                       IsPullToRefreshEnabled="True"
-                      ItemsSource="{Binding EstabelecimentoList}"
-                      SelectedItem="{Binding SelectedEstabelecimento, Mode=TwoWay}" Margin="15">
+                      ItemsSource="{Binding FavoritoList}"
+                      SelectedItem="{Binding SelectedFavorito, Mode=TwoWay}" Margin="15">
                     <ListView.ItemTemplate>
                         <DataTemplate>
 		                    <ViewCell>
@@ -62,7 +62,7 @@
                                             <ColumnDefinition Width = "50"/>
                                             <ColumnDefinition Width = "40" />
                                         </Grid.ColumnDefinitions >
-                                        
+
                                         <Label Grid.Column= "0" Grid.Row= "1" TextColor= "DarkRed" >
                                             <Label.FormattedText >
                                                 <FormattedString >
@@ -71,13 +71,7 @@
                                             </Label.FormattedText >
                                         </Label >
 
-                                        <Image Grid.Column= "1" Grid.Row= "1"  Source= "iconsExcluir50.png" Aspect= "AspectFit" >
-		                                    <Image.GestureRecognizers >
-                                                <TapGestureRecognizer Command= "{Binding Path=BindingContext.ExcluirFavoritoCommand, Source={x:Reference Name=FavListPage}}" />
-		                                    </Image.GestureRecognizers >
-		                                </Image >
-		
-		                                <Image Grid.Column= "2" Grid.Row= "1"  Source= "share.png" Aspect= "AspectFit" >
+                                        <Image Grid.Column= "2" Grid.Row= "1"  Source= "share.png" Aspect= "AspectFit" >
 		                                    <Image.GestureRecognizers >
                                                 <TapGestureRecognizer Command= "{Binding Path=BindingContext.CompartilharFavoritoCommand, Source={x:Reference Name=FavListPage}}" CommandParameter= "{Binding .}" />
 		                                    </Image.GestureRecognizers >

@@ -77,5 +77,18 @@ namespace OutBackX.Repository
             }
         }
 
+        private string nomeEstabelecimento;
+        public string NomeEstabelecimento
+        {
+            get { return nomeEstabelecimento; }
+            set
+            {
+                if (nomeEstabelecimento != value)
+                {
+                    nomeEstabelecimento = value;
+                }
+            }
+        }
+
     }
 }

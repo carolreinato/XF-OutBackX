@@ -12,7 +12,7 @@ namespace OutBackX.View
         {
             InitializeComponent();
 
-            BindingContext = new EstabelecimentoCrudViewModel(estabelecimento);
+            BindingContext = new FavoritoUsuarioCrudViewModel(estabelecimento);
 
             pesquisaEstabelecimento.IsVisible = false;
 
@@ -20,11 +20,11 @@ namespace OutBackX.View
 
             CarregaEstabelecimento(estabelecimento);
         }
-        public UsuarioEstabelecimentoFavoritoListarPage(int idFuncionarioModel)
+        public UsuarioEstabelecimentoFavoritoListarPage()
         {
             InitializeComponent();
 
-            BindingContext = new EstabelecimentoListViewModel("UsuarioEstabelecimentoFavoritoListarPage");
+            BindingContext = new FavoritoUsuarioListViewModel();
         }
 
         private void CarregaEstabelecimento(EstabelecimentoModel estabelecimento)

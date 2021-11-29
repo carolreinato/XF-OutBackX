@@ -53,22 +53,22 @@
             </Entry>
 
             <Label Text="Endereço:*" Grid.Row="2" Grid.Column="0"/>
-            <Entry Placeholder="Ex: Rua Barão do Bananal, 1500" Text="{Binding Estabelecimento.EnderecoEstabelecimento}" Grid.Row="3" Grid.Column="0"/>
+                <Entry Placeholder="Ex: Rua Marie Nader Calfat, 150" Text="{Binding Estabelecimento.EnderecoEstabelecimento}" Grid.Row="3" Grid.Column="0"/>
 
             <Label Text="Estado:*" Grid.Row="2" Grid.Column="1"/>
             <Entry Placeholder="Ex: SP" Text="{Binding Estabelecimento.EstadoEstabelecimento}" MaxLength="2" Grid.Row="3" Grid.Column="1"/>
 
             <Label Text="Bairro:*" Grid.Row="4" Grid.Column="0"/>
-            <Entry Placeholder="Ex: Pompeia" Text="{Binding Estabelecimento.BairroEstabelecimento}" Grid.Row="5" Grid.Column="0"/>
+                <Entry Placeholder="Ex: Jardim Ampliação" Text="{Binding Estabelecimento.BairroEstabelecimento}" Grid.Row="5" Grid.Column="0"/>
 
             <Label Text="Cidade:*" Grid.Row="4" Grid.Column="1"/>
             <Entry Placeholder="Ex: São Paulo" Text="{Binding Estabelecimento.CidadeEstabelecimento}" Grid.Row="5" Grid.Column="1"/>
 
-            <Label Text="(opcional) CoordenadaX:" Grid.Row="6" Grid.Column="0"/>
-            <Entry Placeholder="Ex: 254,6986" Text="{Binding Estabelecimento.CoordenadaX}" Keyboard="Numeric" Grid.Row="7" Grid.Column="0"/>
+                <Label Text="CoordenadaX:(opicional)" Grid.Row="6" Grid.Column="0"/>
+                <Entry Placeholder="Ex: 48,35" Text="{Binding Estabelecimento.CoordenadaX}" Keyboard="Numeric" Grid.Row="7" Grid.Column="0"/>
 
-            <Label Text="(opcional) CoordenadaY:" Grid.Row="6" Grid.Column="1"/>
-            <Entry Placeholder="Ex: 31,2557" Text="{Binding Estabelecimento.CoordenadaY}" Keyboard="Numeric" Grid.Row="7" Grid.Column="1"/>
+                <Label Text="CoordenadaY:(opicional)" Grid.Row="6" Grid.Column="1"/>
+                <Entry Placeholder="Ex: 23,6899" Text="{Binding Estabelecimento.CoordenadaY}" Keyboard="Numeric" Grid.Row="7" Grid.Column="1"/>
 
             <Label Text="(opcional) Nivel Lotação:" Grid.Row="8" Grid.Column="0"/>
             <Picker Title="Opções" SelectedItem="{Binding Estabelecimento.NivelLotacao, Mode=TwoWay}" FontSize="Subtitle" Grid.Row="9" Grid.Column="0" BackgroundColor="White">

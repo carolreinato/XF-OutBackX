@@ -37,7 +37,7 @@ namespace OutBackX.View
             {
                 if (item.Title.Equals("Favoritos"))
                 {
-                    Detail = new NavigationPage(new UsuarioEstabelecimentoFavoritoListarPage(99));
+                    Detail = new NavigationPage(new UsuarioEstabelecimentoFavoritoListarPage());
                 }
                 else if (item.Title.Equals("Próximos a mim"))
                 {

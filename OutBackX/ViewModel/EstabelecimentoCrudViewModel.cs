@@ -20,11 +20,8 @@ namespace OutBackX.ViewModel
     public class EstabelecimentoCrudViewModel : EstabelecimentoBaseViewModel
     {
         #region Construtor 
-        public EstabelecimentoCrudViewModel(int idFuncionarioLogado)
+        public EstabelecimentoCrudViewModel()
         {
-            estabelecimento.IdFuncionario = 999999;
-
-            funcionarioModel.IdFuncionario = idFuncionarioLogado;
 
             SalvarClickedCommand = new Command(async () => await Salvar(estabelecimento));
 
@@ -48,14 +45,13 @@ namespace OutBackX.ViewModel
             AddFavoritosClickedCommand = new Command(async () => await AddFavoritos(estabelecimento));
         }
 
-        public EstabelecimentoCrudViewModel()
-        {           
-        }
         #endregion
 
         #region Properties
 
         public FuncionarioModel funcionarioModel = new FuncionarioModel();
+
+        private FavoritoUsuarioRepository _favoritoRepository = new FavoritoUsuarioRepository();
 
         private EstabelecimentoRepository _estabelecimentoRepository = new EstabelecimentoRepository();
 
@@ -166,7 +162,7 @@ namespace OutBackX.ViewModel
             {
                 _estabelecimentoRepository.Update(estabelecimento);
 
-                if (estabelecimento.IdFuncionario != 99)
+                if (estabelecimento.IdFuncionario != 0)
                 {
                     await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoPage());
                 }
@@ -183,6 +179,11 @@ namespace OutBackX.ViewModel
             bool resposta = await _messageService.ShowAsyncBool("Excluir", "Confirma a exlusão?", "Sim", "Não");
             if (resposta)
             {
+                var favorito = _favoritoRepository.Get(estabelecimento);
+                if (favorito != null)
+                {
+                    _favoritoRepository.Delete(favorito);
+                }
                 _estabelecimentoRepository.Delete(estabelecimento);
                 
 

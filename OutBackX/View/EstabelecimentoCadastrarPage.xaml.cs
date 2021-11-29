@@ -11,11 +11,11 @@ namespace OutBackX.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EstabelecimentoCadastrarPage : ContentPage
     {
-        public EstabelecimentoCadastrarPage(int idFuncionarioModel)
+        public EstabelecimentoCadastrarPage()
         {
             InitializeComponent();
 
-            BindingContext = new EstabelecimentoCrudViewModel(idFuncionarioModel);
+            BindingContext = new EstabelecimentoCrudViewModel();
         }
     }
 }

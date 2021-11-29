@@ -149,8 +149,8 @@ namespace OutBackX.ViewModel
             }
             else if (paginaOrigem.Equals("UsuarioPage"))
             {
-                EstabelecimentoCrudViewModel estabelecimentoCrudViewModel = new EstabelecimentoCrudViewModel();
-                await estabelecimentoCrudViewModel.AddFavoritos(estabelecimento);
+                FavoritoUsuarioCrudViewModel favoritoUsuarioCrudViewModel = new FavoritoUsuarioCrudViewModel(estabelecimento);
+                await favoritoUsuarioCrudViewModel.Salvar(estabelecimento);
             }
             else if (paginaOrigem.Equals("UsuarioEstabelecimentoFavoritoListarPage"))
             {
@@ -158,6 +158,7 @@ namespace OutBackX.ViewModel
             }
 
         }
+
         #endregion
     }
 

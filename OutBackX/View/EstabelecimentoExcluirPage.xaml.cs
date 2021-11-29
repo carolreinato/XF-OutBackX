@@ -24,7 +24,7 @@ namespace OutBackX.View
             CarregaEstabelecimento(estabelecimento);            
         }
 
-        public EstabelecimentoExcluirPage(int idFuncionarioModel)
+        public EstabelecimentoExcluirPage()
         {
             InitializeComponent();
 

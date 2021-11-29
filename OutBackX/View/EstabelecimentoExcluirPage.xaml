@@ -107,7 +107,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Nome do Estabelecimento:*" Grid.Row="0" Grid.Column="0"/>
-                <Entry x:Name="nomeEstabelecimento" Placeholder="Ex: Padaria Pão Doce" Text="{Binding Estabelecimento.NomeEstabelecimento}" Grid.Row="1" Grid.Column="0"/>
+                    <Entry x:Name="nomeEstabelecimento" Placeholder="Ex: Rua Marie Nader Calfat, 150" Text="{Binding Estabelecimento.NomeEstabelecimento}" Grid.Row="1" Grid.Column="0"/>
 
                 <Label Text="CEP:*" Grid.Row="0" Grid.Column="1"/>
                 <Entry x:Name="cepEstabelecimento" Placeholder="Ex: 05024-000" Text="{Binding Estabelecimento.CEPEstabelecimento}" Grid.Row="1" Grid.Column="1">
@@ -117,24 +117,24 @@
                 </Entry>
 
                 <Label Text="Endereço:*" Grid.Row="2" Grid.Column="0"/>
-                <Entry x:Name="enderecoEstabelecimento" Placeholder="Ex: Rua Barão do Bananal, 1500" Text="{Binding Estabelecimento.EnderecoEstabelecimento}" Grid.Row="3" Grid.Column="0"/>
+                    <Entry x:Name="enderecoEstabelecimento" Placeholder="Ex: Rua Marie Nader Calfat, 150" Text="{Binding Estabelecimento.EnderecoEstabelecimento}" Grid.Row="3" Grid.Column="0"/>
 
                 <Label Text="Estado:*" Grid.Row="2" Grid.Column="1"/>
                 <Entry x:Name="estadoEstabelecimento" Placeholder="Ex: SP" Text="{Binding Estabelecimento.EstadoEstabelecimento}" MaxLength="2" Grid.Row="3" Grid.Column="1"/>
 
                 <Label Text="Bairro:*" Grid.Row="4" Grid.Column="0"/>
-                <Entry x:Name="bairroEstabelecimento" Placeholder="Ex: Pompeia" Text="{Binding Estabelecimento.BairroEstabelecimento}" Grid.Row="5" Grid.Column="0"/>
+                    <Entry x:Name="bairroEstabelecimento" Placeholder="Ex: Jardim Ampliação" Text="{Binding Estabelecimento.BairroEstabelecimento}" Grid.Row="5" Grid.Column="0"/>
 
                 <Label Text="Cidade:*" Grid.Row="4" Grid.Column="1"/>
                 <Entry x:Name="cidadeEstabelecimento" Placeholder="Ex: São Paulo" Text="{Binding Estabelecimento.CidadeEstabelecimento}" Grid.Row="5" Grid.Column="1"/>
 
-                <Label Text="(opcional) CoordenadaX:" Grid.Row="6" Grid.Column="0"/>
-                <Entry x:Name="coordenadaXEstabelecimento" Placeholder="Ex: 254,6986" Text="{Binding Estabelecimento.CoordenadaX}" Keyboard="Numeric" Grid.Row="7" Grid.Column="0"/>
+                    <Label Text="CoordenadaX:(opicional)" Grid.Row="6" Grid.Column="0"/>
+                    <Entry x:Name="coordenadaXEstabelecimento" Placeholder="Ex: 48,35" Text="{Binding Estabelecimento.CoordenadaX}" Keyboard="Numeric" Grid.Row="7" Grid.Column="0"/>
 
-                <Label Text="(opcional) CoordenadaY:" Grid.Row="6" Grid.Column="1"/>
-                <Entry x:Name="coordenadaYEstabelecimento" Placeholder="Ex: 31,2557" Text="{Binding Estabelecimento.CoordenadaY}" Keyboard="Numeric" Grid.Row="7" Grid.Column="1"/>
+                    <Label Text="CoordenadaY:(opicional)" Grid.Row="6" Grid.Column="1"/>
+                    <Entry x:Name="coordenadaYEstabelecimento" Placeholder="Ex: 23,6899" Text="{Binding Estabelecimento.CoordenadaY}" Keyboard="Numeric" Grid.Row="7" Grid.Column="1"/>
 
-                <Label Text="(opcional) Nivel Lotação:" Grid.Row="8" Grid.Column="0"/>
+                    <Label Text="Nível Lotação:(opicional)" Grid.Row="8" Grid.Column="0"/>
                 <Picker x:Name="nivelLotacao" Title="Opções" SelectedItem="{Binding Estabelecimento.NivelLotacao, Mode=TwoWay}" FontSize="Small" Grid.Row="9" Grid.Column="0" BackgroundColor="White">
                     <Picker.Items>
                         <x:String>Vazio</x:String>

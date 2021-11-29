@@ -39,15 +39,15 @@ namespace OutBackX.View
             {
                 if (item.Title.Equals("Cadastrar Estabelecimento"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoCadastrarPage(funcionarioModel.IdFuncionario));
+                    Detail = new NavigationPage(new EstabelecimentoCadastrarPage());
                 }
                 else if (item.Title.Equals("Atualizar Estabelecimento"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoAtualizarPage(funcionarioModel.IdFuncionario));
+                    Detail = new NavigationPage(new EstabelecimentoAtualizarPage());
                 }
                 else if (item.Title.Equals("Excluir Estabelecimento"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoExcluirPage(funcionarioModel.IdFuncionario));
+                    Detail = new NavigationPage(new EstabelecimentoExcluirPage());
                 }
                 else if (item.Title.Equals("Mapa"))
                 {

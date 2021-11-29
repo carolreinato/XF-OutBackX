@@ -66,7 +66,6 @@ namespace OutBackX.Repository
                 sql + "where E.NomeEstabelecimento = ? ", nome)
                 .ToList().FirstOrDefault();
         }
-
         public void Insert(FavoritoUsuarioModel _FavoritoUsuarioModel)
         {
             _FavoritoUsuarioModel.DataCadastro = DateTime.Now.ToString();

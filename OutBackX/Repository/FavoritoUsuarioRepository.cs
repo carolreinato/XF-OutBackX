@@ -49,21 +49,10 @@ namespace OutBackX.Repository
             ); 
             return connection.Table<FavoritoUsuarioModel>().ToList();
         }
-
-        public FavoritoUsuarioModel Get(int id)
-        {
-            return connection.Table<FavoritoUsuarioModel>().Where(i => i.IdFavoritoUsuario == id).FirstOrDefault();
-        }
         public FavoritoUsuarioModel Get(EstabelecimentoModel e)
         {
             return connection.Query<FavoritoUsuarioModel>(
                 sql + "where F.IdEstabelecimento = ? ", e.IdEstabelecimento)
-                .ToList().FirstOrDefault();
-        }
-        public FavoritoUsuarioModel Get(string nome)
-        {
-            return connection.Query<FavoritoUsuarioModel>(
-                sql + "where E.NomeEstabelecimento = ? ", nome)
                 .ToList().FirstOrDefault();
         }
         public void Insert(FavoritoUsuarioModel _FavoritoUsuarioModel)
@@ -71,12 +60,6 @@ namespace OutBackX.Repository
             _FavoritoUsuarioModel.DataCadastro = DateTime.Now.ToString();
             connection.Insert(_FavoritoUsuarioModel);
         }
-
-        public void Update(FavoritoUsuarioModel _FavoritoUsuarioModel)
-        {
-            connection.Update(_FavoritoUsuarioModel);
-        }
-
         public void Delete(FavoritoUsuarioModel _FavoritoUsuarioModel)
         {
             connection.Delete(_FavoritoUsuarioModel);

@@ -26,21 +26,9 @@ namespace OutBackX.Repository
         {
             return connection.Table<EstabelecimentoModel>().Where(i => i.IdFuncionario == idFuncionario).ToList();
         }
-        public List<EstabelecimentoModel> GetListEstabelecimentoNome(string nome)
-        {
-            return connection.Table<EstabelecimentoModel>().Where(i => i.NomeEstabelecimento.ToUpper().Contains(nome.ToUpper())).ToList();
-        }
         public EstabelecimentoModel Get(int id)
         {
             return connection.Table<EstabelecimentoModel>().Where(i => i.IdEstabelecimento == id).FirstOrDefault();
-        }
-        public EstabelecimentoModel Get(string nome)
-        {
-            return connection.Table<EstabelecimentoModel>().Where(i => i.NomeEstabelecimento.ToUpper().Equals(nome.ToUpper()) ).FirstOrDefault();
-        }
-        public EstabelecimentoModel Get(double coordenadaX, double coordenadaY)
-        {
-            return connection.Table<EstabelecimentoModel>().Where(i => i.CoordenadaX == coordenadaX && i.CoordenadaY == coordenadaY).FirstOrDefault();
         }
         public void Insert(EstabelecimentoModel _estabelecimentoModel)
         {

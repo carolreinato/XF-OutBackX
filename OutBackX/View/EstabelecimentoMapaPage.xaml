@@ -31,11 +31,6 @@
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand" />
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" >
-                <Button Text="Adicionar" IsEnabled="{Binding ShowShare}"  Command="{Binding AdicionarFavoritosCommand}" CornerRadius="10" BackgroundColor="CornflowerBlue" TextColor="WhiteSmoke"/>
-                <Button Text="Compartilhar" IsEnabled="{Binding ShowShare}"  Command="{Binding CompartilharCommand}" CornerRadius="10" BackgroundColor="CornflowerBlue" TextColor="WhiteSmoke"/>
-            </StackLayout>
-
         </StackLayout>
 
     </ContentPage.Content>

@@ -32,11 +32,6 @@ namespace OutBackX.ViewModel
                 return;
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         #endregion
 
 
@@ -160,15 +155,6 @@ namespace OutBackX.ViewModel
                 return _compartilharCommand ?? (_compartilharCommand  = new Command(async () => await CompartilharEstabelecimento()));
             }
 
-        }
-
-        private ICommand _adicionarFavoritosCommand;
-        public ICommand AdicionarFavoritosCommand
-        {
-            get
-            {
-                return _adicionarFavoritosCommand ?? (_adicionarFavoritosCommand = new Command(async () => await AdicionarFavoritos()));
-            }
         }
 
         #endregion
@@ -330,46 +316,6 @@ namespace OutBackX.ViewModel
                 initialValue: DistanciaKm.ToString());
             DistanciaKm = double.Parse(result);
             await CentralizarMap();
-        }
-
-        private async Task AdicionarFavoritos()
-        {
-
-            if (selectedPin != null)
-            {
-                EstabelecimentoModel e = (EstabelecimentoModel)selectedPin.BindingContext;
-                if (e != null)
-                {
-                    bool resposta = await _messageService.ShowAsyncBool("Adicionar", $"Adicionar '{e.NomeEstabelecimento}' aos favoritos?", "Sim", "Não");
-                    if (resposta)
-                    {
-                        if (_favoritoUsuarioRepository == null)
-                            _favoritoUsuarioRepository = new FavoritoUsuarioRepository();
-
-                        FavoritoUsuarioModel favorito = _favoritoUsuarioRepository.Get(e);
-                        if (favorito == null)
-                        {
-                            favorito = new FavoritoUsuarioModel
-                            {
-                                EstabelecimentoRef = e,
-                                IdEstabelecimento = e.IdEstabelecimento,
-                                DataCadastro = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
-                            };
-                            _favoritoUsuarioRepository.Insert(favorito);
-
-                            await _messageService.ShowAsync("Adicionado", "Adicionado aos favoritos", "OK");
-                        }
-                        else
-                        {
-                            await _messageService.ShowAsync("Atenção", "Estabelecimento já foi adicionado ", "OK");
-                        }
-                    }
-                }
-            }
-            else
-            {
-                await _messageService.ShowAsync("Atenção", "Nenum local foi selecionado", "OK");
-            }
         }
 
         private async Task CompartilharEstabelecimento()

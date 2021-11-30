@@ -10,8 +10,6 @@ namespace OutBackX.ViewModel
     {
         private readonly FuncionarioRepository _repository;
 
-        #region Properties
-
         private string nomeFuncionario;
         public string NomeFuncionario
         {
@@ -64,14 +62,9 @@ namespace OutBackX.ViewModel
                 }
             }
         }
-
-        #endregion
-
-        #region ICommand
         public ICommand EntrarClickedCommand { get; private set; }
         public ICommand SalvarClickedCommand { get; private set; }
-        #endregion
-
+  
         public FuncionarioViewModel()
         {
             _repository = new FuncionarioRepository();

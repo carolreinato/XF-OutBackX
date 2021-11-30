@@ -21,22 +21,7 @@ namespace OutBackX.ViewModel
         public const double DistanciaListaEstabelecimentos = 10;
         protected IMessageService _messageService;
 
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged == null)
-                return;
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-
-
-        #region Properties
-
         private EstabelecimentoRepository _estabelecimentoRepository;
-
 
         private ObservableCollection<EstabelecimentoModel> estabelecimentoList = new ObservableCollection<EstabelecimentoModel>();
         public ObservableCollection<EstabelecimentoModel> EstabelecimentoList
@@ -105,9 +90,17 @@ namespace OutBackX.ViewModel
             get { return _mapa; }
             set { _mapa = value; }
         }
-        #endregion
 
-        #region ICommand
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            if (PropertyChanged == null)
+                return;
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+   
         private ICommand _centralizarMapaCommand;
         public ICommand CentralizarMapaCommand
         {
@@ -154,9 +147,6 @@ namespace OutBackX.ViewModel
 
         }
 
-        #endregion
-
-        #region Metodos
         private static Geocoder GetGeoCoder()
         {
             if (geocoder == null)
@@ -359,6 +349,5 @@ namespace OutBackX.ViewModel
         {
             showShare = true;
         }
-        #endregion
     }
 }

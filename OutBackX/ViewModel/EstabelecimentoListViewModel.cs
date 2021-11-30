@@ -11,22 +11,9 @@ namespace OutBackX.ViewModel
 {
     public class EstabelecimentoListViewModel : EstabelecimentoBaseViewModel
     {
-        #region Construtor
-        public EstabelecimentoListViewModel(string paginaOrigemRecebida)
-        {
-            paginaOrigem = paginaOrigemRecebida;
-            ListarDados();
-        }
-
-        public EstabelecimentoListViewModel()
-        {
-            _estabelecimentoRepository = new EstabelecimentoRepository();
-        }
-        #endregion
-
-        #region Properties
-        public int idFuncionarioModel { get; set; }
-        public string paginaOrigem { get; set; }
+      
+        public int IdFuncionarioModel { get; set; }
+        public string PaginaOrigem { get; set; }
 
         private EstabelecimentoRepository _estabelecimentoRepository;
 
@@ -60,9 +47,18 @@ namespace OutBackX.ViewModel
                 }
             }
         }
-        #endregion
+    
+        public EstabelecimentoListViewModel(string paginaOrigemRecebida)
+        {
+            PaginaOrigem = paginaOrigemRecebida;
+            ListarDados();
+        }
 
-        #region ICommand
+        public EstabelecimentoListViewModel()
+        {
+            _estabelecimentoRepository = new EstabelecimentoRepository();
+        }
+        
         private ICommand _listarClickedCommand;
         public ICommand ListarClickedCommand
         {
@@ -81,7 +77,7 @@ namespace OutBackX.ViewModel
                 {
                     _estabelecimentoRepository = new EstabelecimentoRepository();
 
-                    var lista = _estabelecimentoRepository.GetList(idFuncionarioModel).ToList<EstabelecimentoModel>();
+                    var lista = _estabelecimentoRepository.GetList(IdFuncionarioModel).ToList<EstabelecimentoModel>();
 
                     if (text.Length >= 1)
                     {
@@ -113,10 +109,7 @@ namespace OutBackX.ViewModel
                 }));
             }
         }
-
-        #endregion
-
-        #region Metodos        
+               
         private void ListarEstabelecimentos()
         {
             ListarDados();
@@ -137,7 +130,7 @@ namespace OutBackX.ViewModel
         }
         private async void ExibirDetalhes(EstabelecimentoModel estabelecimento)
         {
-            switch (paginaOrigem)
+            switch (PaginaOrigem)
             {
                 case "paginaAtualizar" :
                     await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoAtualizarPage(estabelecimento));
@@ -156,8 +149,6 @@ namespace OutBackX.ViewModel
                     break;
             }
         }
-
-        #endregion
     }
 
     public class TextChangedBehavior : Behavior<SearchBar>

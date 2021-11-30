@@ -12,41 +12,11 @@ namespace OutBackX.ViewModel
 {
     public class EstabelecimentoCrudViewModel : EstabelecimentoBaseViewModel
     {
-        #region Construtor 
-        public EstabelecimentoCrudViewModel()
-        {
-
-            SalvarClickedCommand = new Command(async () => await Salvar(estabelecimento));
-
-            AtualizarClickedCommand = new Command(async () => await Atualizar(estabelecimento));
-
-            ExcluirClickedCommand = new Command(async () => await Excluir(estabelecimento));
-
-            AddFavoritosClickedCommand = new Command(async () => await AddFavoritos(estabelecimento));
-        }
-
-        public EstabelecimentoCrudViewModel(EstabelecimentoModel estabelecimentoCurrent)
-        {
-            estabelecimento = estabelecimentoCurrent;
-
-            SalvarClickedCommand = new Command(async () => await Salvar(estabelecimento));
-
-            AtualizarClickedCommand = new Command(async () => await Atualizar(estabelecimento));
-
-            ExcluirClickedCommand = new Command(async () => await Excluir(estabelecimento));
-
-            AddFavoritosClickedCommand = new Command(async () => await AddFavoritos(estabelecimento));
-        }
-
-        #endregion
-
-        #region Properties
-
         public FuncionarioModel funcionarioModel = new FuncionarioModel();
 
-        private FavoritoUsuarioRepository _favoritoRepository = new FavoritoUsuarioRepository();
+        private readonly FavoritoUsuarioRepository _favoritoRepository = new FavoritoUsuarioRepository();
 
-        private EstabelecimentoRepository _estabelecimentoRepository = new EstabelecimentoRepository();
+        private readonly EstabelecimentoRepository _estabelecimentoRepository = new EstabelecimentoRepository();
 
         private EstabelecimentoModel estabelecimento = new EstabelecimentoModel();
         public EstabelecimentoModel Estabelecimento
@@ -91,14 +61,31 @@ namespace OutBackX.ViewModel
                 }
             }
         }
-        #endregion
 
-        #region ICommand
+        public EstabelecimentoCrudViewModel()
+        {
+
+            SalvarClickedCommand = new Command(async () => await Salvar(estabelecimento));
+
+            AtualizarClickedCommand = new Command(async () => await Atualizar(estabelecimento));
+
+            ExcluirClickedCommand = new Command(async () => await Excluir(estabelecimento));
+        }
+
+        public EstabelecimentoCrudViewModel(EstabelecimentoModel estabelecimentoCurrent)
+        {
+            estabelecimento = estabelecimentoCurrent;
+
+            SalvarClickedCommand = new Command(async () => await Salvar(estabelecimento));
+
+            AtualizarClickedCommand = new Command(async () => await Atualizar(estabelecimento));
+
+            ExcluirClickedCommand = new Command(async () => await Excluir(estabelecimento));
+        }
+
         public ICommand ExcluirClickedCommand { get; private set; }
         public ICommand SalvarClickedCommand { get; private set; }
         public ICommand AtualizarClickedCommand { get; private set; }
-        public ICommand AddFavoritosClickedCommand { get; private set; }
-        public ICommand ListarClickedCommand { get; private set; }
 
         private ICommand _searchCommand;
         public ICommand SearchCommand
@@ -122,13 +109,9 @@ namespace OutBackX.ViewModel
                 }));
             }
         }
-        #endregion
-
-        #region Métodos
+     
         public async Task Salvar(EstabelecimentoModel estabelecimento)
         {
-            _estabelecimentoRepository = new EstabelecimentoRepository();
-
             string message = estabelecimento.IdEstabelecimento > 0 ? "Deseja Salvar?" : "Incluir estabelecimento?";
 
             bool res = await _messageService.ShowAsyncBool("Salvar", message, "Sim", "Não");
@@ -145,8 +128,6 @@ namespace OutBackX.ViewModel
         }
         public async Task Atualizar(EstabelecimentoModel estabelecimento)
         {
-            _estabelecimentoRepository = new EstabelecimentoRepository();
-
             string message = "Deseja Salvar As Alterações?";
 
             bool res = await _messageService.ShowAsyncBool("Salvar", message, "Sim", "Não");
@@ -167,8 +148,6 @@ namespace OutBackX.ViewModel
         }
         public async Task Excluir(EstabelecimentoModel estabelecimento)
         {
-            _estabelecimentoRepository = new EstabelecimentoRepository();
-
             bool resposta = await _messageService.ShowAsyncBool("Excluir", "Confirma a exlusão?", "Sim", "Não");
             if (resposta)
             {
@@ -183,21 +162,9 @@ namespace OutBackX.ViewModel
                 await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoPage());
             }
         }
-        public async Task AddFavoritos(EstabelecimentoModel estabelecimento)
-        {
-            bool resposta = await _messageService.ShowAsyncBool("Adicionar", "Adicionar aos favoritos?", "Sim", "Não");
-            if (resposta)
-            {
-                estabelecimento.IdFuncionario = 99;
-                _estabelecimentoRepository.Insert(estabelecimento);
-
-                await Application.Current.MainPage.Navigation.PushAsync(new UsuarioPage(99));
-            }
-        }
         private void ExibirDetalhesExcluir(EstabelecimentoModel estabelecimento)
         {
             Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoExcluirPage(estabelecimento));
-        }
-        #endregion              
+        } 
     }
 }

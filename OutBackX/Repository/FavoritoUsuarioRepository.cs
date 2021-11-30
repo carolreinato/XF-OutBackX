@@ -9,7 +9,7 @@ namespace OutBackX.Repository
 {
     public class FavoritoUsuarioRepository : IDisposable
     {
-        private SQLite.SQLiteConnection connection;
+        private readonly SQLite.SQLiteConnection connection;
         private static string query = @"select F.IdFavoritoUsuario, F.DataCadastro, 
                 E.IdEstabelecimento, E.NomeEstabelecimento, E.IdFuncionario, E.EnderecoEstabelecimento, E.BairroEstabelecimento, 
                 E.CEPEstabelecimento, E.CidadeEstabelecimento, E.EstadoEstabelecimento, E.CoordenadaX, E.CoordenadaY, E.NivelLotacao 

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Xamarin.Forms;
-using OutBackX.Model;
+﻿using OutBackX.Model;
 using OutBackX.Repository;
 using OutBackX.View;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace OutBackX.ViewModel
 {
-    public class FuncionarioViewModel: INotifyPropertyChanged
+    public class FuncionarioViewModel
     {
-        private FuncionarioRepository _repository;
+        private readonly FuncionarioRepository _repository;
 
         #region Properties
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private string nomeFuncionario;
         public string NomeFuncionario
@@ -74,14 +68,14 @@ namespace OutBackX.ViewModel
         #endregion
 
         #region ICommand
-        public ICommand EntrarClickedCommand { get; private set; }      
+        public ICommand EntrarClickedCommand { get; private set; }
         public ICommand SalvarClickedCommand { get; private set; }
         #endregion
 
         public FuncionarioViewModel()
         {
             _repository = new FuncionarioRepository();
-            var mensagem = "";
+            var mensagem = string.Empty;
 
             EntrarClickedCommand = new Command(async () =>
             {
@@ -99,15 +93,14 @@ namespace OutBackX.ViewModel
                 }
                 else
                 {
-                    mensagem = "Favor Verifique Seu Usuario e Senha!";
+                    mensagem = "Verifique Seu Usuario e Senha!";
                     await Application.Current.MainPage.DisplayAlert("Atenção", mensagem, "OK");
-                }                
-
-            });           
+                }
+            });
 
             SalvarClickedCommand = new Command(() =>
             {
-                if (this.EmailFuncionario != null && 
+                if (this.EmailFuncionario != null &&
                     this.SenhaFuncionario != null &&
                     this.CpfFuncionario != null &&
                     this.NomeFuncionario != null)
@@ -126,11 +119,11 @@ namespace OutBackX.ViewModel
                 }
                 else
                 {
-                    mensagem = "Não Pode Conter Campos Vazios!";
-                                    
+                    mensagem = "Todos os campos são obrigatórios!";
                 }
                 Application.Current.MainPage.DisplayAlert("Atenção", mensagem, "OK");
+                Application.Current.MainPage.Navigation.PushAsync(new FuncionarioEntrarPage());
             });
-        }                     
+        }
     }
 }

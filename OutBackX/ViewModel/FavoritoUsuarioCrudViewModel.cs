@@ -16,8 +16,8 @@ namespace OutBackX.ViewModel
     public class FavoritoUsuarioCrudViewModel : EstabelecimentoBaseViewModel
     {
         private EstabelecimentoModel estabelecimento = new EstabelecimentoModel();
-        private FavoritoUsuarioRepository _repository;
-        private EstabelecimentoRepository _repositoryEstabelecimento;
+        private readonly FavoritoUsuarioRepository _repository;
+        private readonly EstabelecimentoRepository _repositoryEstabelecimento;
 
         private ObservableCollection<EstabelecimentoModel> estabelecimentoList = new ObservableCollection<EstabelecimentoModel>();
         public ObservableCollection<EstabelecimentoModel> EstabelecimentoList
@@ -51,12 +51,8 @@ namespace OutBackX.ViewModel
         {
             ListarDados();
         }
-
-        public ICommand ExcluirClickedCommand { get; private set; }
         public ICommand SalvarClickedCommand { get; private set; }
         public ICommand AtualizarClickedCommand { get; private set; }
-        public ICommand AddFavoritosClickedCommand { get; private set; }
-        public ICommand ListarClickedCommand { get; private set; }
 
         public async Task Salvar(EstabelecimentoModel estabelecimento)
         {

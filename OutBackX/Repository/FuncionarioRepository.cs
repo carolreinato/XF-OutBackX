@@ -7,7 +7,7 @@ namespace OutBackX.Repository
     public class FuncionarioRepository : IDisposable
     {
 
-        private SQLite.SQLiteConnection connection;
+        private readonly SQLite.SQLiteConnection connection;
 
         public FuncionarioRepository()
         {

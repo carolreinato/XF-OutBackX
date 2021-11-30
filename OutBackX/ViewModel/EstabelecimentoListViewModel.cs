@@ -116,7 +116,7 @@ namespace OutBackX.ViewModel
 
         #endregion
 
-        #region Metodo        
+        #region Metodos        
         private void ListarEstabelecimentos()
         {
             ListarDados();
@@ -137,24 +137,24 @@ namespace OutBackX.ViewModel
         }
         private async void ExibirDetalhes(EstabelecimentoModel estabelecimento)
         {
-            if (paginaOrigem.Equals("paginaAtualizar"))
+            switch (paginaOrigem)
             {
-                await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoAtualizarPage(estabelecimento));
-            }
-            else if (paginaOrigem.Equals("paginaExcluir"))
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoExcluirPage(estabelecimento));
-            }
-            else if (paginaOrigem.Equals("UsuarioPage"))
-            {
-                FavoritoUsuarioCrudViewModel favoritoUsuarioCrudViewModel = new FavoritoUsuarioCrudViewModel(estabelecimento);
-                await favoritoUsuarioCrudViewModel.Salvar(estabelecimento);
-            }
-            else if (paginaOrigem.Equals("UsuarioEstabelecimentoFavoritoListarPage"))
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new UsuarioEstabelecimentoFavoritoListarPage(estabelecimento));
-            }
+                case "paginaAtualizar" :
+                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoAtualizarPage(estabelecimento));
+                    break;
 
+                case "paginaExcluir":
+                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoExcluirPage(estabelecimento));
+                    break;
+
+                case "UsuarioPage":
+                    FavoritoUsuarioCrudViewModel favoritoUsuarioCrudViewModel = new FavoritoUsuarioCrudViewModel(estabelecimento);
+                    await favoritoUsuarioCrudViewModel.Salvar(estabelecimento);
+                    break;
+                case "UsuarioEstabelecimentoFavoritoListarPage":
+                    await Application.Current.MainPage.Navigation.PushAsync(new UsuarioEstabelecimentoFavoritoListarPage(estabelecimento));
+                    break;
+            }
         }
 
         #endregion

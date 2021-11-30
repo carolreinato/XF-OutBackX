@@ -8,7 +8,7 @@ namespace OutBackX.Repository
     public class EstabelecimentoRepository : IDisposable
     {
 
-        private SQLite.SQLiteConnection connection;
+        private readonly SQLite.SQLiteConnection connection;
 
         public EstabelecimentoRepository()
         {

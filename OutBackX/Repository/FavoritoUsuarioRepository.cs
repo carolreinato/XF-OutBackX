@@ -1,8 +1,7 @@
 ﻿using OutBackX.Config;
+using OutBackX.Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OutBackX.Model;
 using System.Linq;
 using Xamarin.Forms.Internals;
 
@@ -11,7 +10,7 @@ namespace OutBackX.Repository
     public class FavoritoUsuarioRepository : IDisposable
     {
         private SQLite.SQLiteConnection connection;
-        private static string sql = @"select F.IdFavoritoUsuario, F.DataCadastro, 
+        private static string query = @"select F.IdFavoritoUsuario, F.DataCadastro, 
                 E.IdEstabelecimento, E.NomeEstabelecimento, E.IdFuncionario, E.EnderecoEstabelecimento, E.BairroEstabelecimento, 
                 E.CEPEstabelecimento, E.CidadeEstabelecimento, E.EstadoEstabelecimento, E.CoordenadaX, E.CoordenadaY, E.NivelLotacao 
                 from FavoritoUsuarioModel F 
@@ -25,7 +24,7 @@ namespace OutBackX.Repository
 
         public IList<FavoritoUsuarioModel> GetList()
         {
-            var e = connection.Query<EstabelecimentoModel>(sql)
+            var e = connection.Query<EstabelecimentoModel>(query)
                 .ToList();
 
             List<EstabelecimentoModel> listaEstab = e.ConvertAll(x => new EstabelecimentoModel
@@ -46,13 +45,13 @@ namespace OutBackX.Repository
             IList<FavoritoUsuarioModel> listaFav = connection.Table<FavoritoUsuarioModel>().ToList();
             listaFav.ForEach(x =>
                 x.EstabelecimentoRef = listaEstab.Find(i => i.IdEstabelecimento == x.IdEstabelecimento)
-            ); 
+            );
             return connection.Table<FavoritoUsuarioModel>().ToList();
         }
         public FavoritoUsuarioModel Get(EstabelecimentoModel e)
         {
             return connection.Query<FavoritoUsuarioModel>(
-                sql + "where F.IdEstabelecimento = ? ", e.IdEstabelecimento)
+                query + "where F.IdEstabelecimento = ? ", e.IdEstabelecimento)
                 .ToList().FirstOrDefault();
         }
         public void Insert(FavoritoUsuarioModel _FavoritoUsuarioModel)

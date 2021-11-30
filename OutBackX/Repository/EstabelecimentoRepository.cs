@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Xamarin.Forms;
-using OutBackX.Config;
+﻿using OutBackX.Config;
 using OutBackX.Model;
+using System;
+using System.Collections.Generic;
 
 namespace OutBackX.Repository
 {
@@ -50,7 +48,7 @@ namespace OutBackX.Repository
         {
             if (connection != null)
             {
-                connection.Dispose(); 
+                connection.Dispose();
             }
         }
     }

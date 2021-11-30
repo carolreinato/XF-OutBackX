@@ -2,9 +2,7 @@
 using OutBackX.Repository;
 using OutBackX.View;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -57,7 +55,7 @@ namespace OutBackX.ViewModel
                     _selectedEstabelecimento = value;
 
                     NotifyPropertyChanged("SelectedEstabelecimento");
-                    
+
                     ExibirDetalhes(value);
                 }
             }
@@ -99,7 +97,7 @@ namespace OutBackX.ViewModel
                     }
                     else
                     {
-                        EstabelecimentoList = new ObservableCollection<EstabelecimentoModel>(lista); 
+                        EstabelecimentoList = new ObservableCollection<EstabelecimentoModel>(lista);
                     }
                 }));
             }
@@ -111,7 +109,7 @@ namespace OutBackX.ViewModel
             {
                 return _showMapCommand ?? (_showMapCommand = new Command<EstabelecimentoModel>(async (estabelecimento) =>
                 {
-                   await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoMapaPage(estabelecimento));
+                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoMapaPage(estabelecimento));
                 }));
             }
         }
@@ -134,8 +132,8 @@ namespace OutBackX.ViewModel
             estabelecimentoList.Clear();
 
             lista.OrderBy(f => f.NomeEstabelecimento).ForEach(x => estabelecimentoList.Add(x));
-           
-            NotifyPropertyChanged("EstabelecimentoList");            
+
+            NotifyPropertyChanged("EstabelecimentoList");
         }
         private async void ExibirDetalhes(EstabelecimentoModel estabelecimento)
         {
@@ -143,7 +141,7 @@ namespace OutBackX.ViewModel
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoAtualizarPage(estabelecimento));
             }
-            else if (paginaOrigem.Equals("paginaExcluir"))  
+            else if (paginaOrigem.Equals("paginaExcluir"))
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoExcluirPage(estabelecimento));
             }

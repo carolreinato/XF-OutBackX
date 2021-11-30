@@ -1,19 +1,12 @@
 ﻿using OutBackX.Model;
 using OutBackX.Repository;
 using OutBackX.View;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.GoogleMaps;
 
 namespace OutBackX.ViewModel
 {
@@ -113,7 +106,7 @@ namespace OutBackX.ViewModel
             get
             {
                 return _searchCommand ?? (_searchCommand = new Command<string>((text) =>
-                {                    
+                {
                     funcionarioModel.IdFuncionario = estabelecimento.IdFuncionario;
 
                     var lista = _estabelecimentoRepository.GetList(estabelecimento.IdFuncionario).ToList<EstabelecimentoModel>();
@@ -149,7 +142,7 @@ namespace OutBackX.ViewModel
 
                 await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoPage());
             }
-        }       
+        }
         public async Task Atualizar(EstabelecimentoModel estabelecimento)
         {
             _estabelecimentoRepository = new EstabelecimentoRepository();
@@ -185,7 +178,7 @@ namespace OutBackX.ViewModel
                     _favoritoRepository.Delete(favorito);
                 }
                 _estabelecimentoRepository.Delete(estabelecimento);
-                
+
 
                 await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoPage());
             }

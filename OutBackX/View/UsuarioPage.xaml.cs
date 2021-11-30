@@ -1,6 +1,4 @@
-﻿using OutBackX.ViewModel;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,7 +24,7 @@ namespace OutBackX.View
 
             Detail = new NavigationPage(new EstabelecimentoListPage("UsuarioPage"));
 
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         public void MainMenuItem_Selected(object sender, SelectedItemChangedEventArgs e)
@@ -42,7 +40,7 @@ namespace OutBackX.View
                 else if (item.Title.Equals("Próximos a mim"))
                 {
                     Detail = new NavigationPage(new EstabelecimentoMapaPage());
-                }                
+                }
 
                 MenuListView.SelectedItem = null;
                 IsPresented = false;

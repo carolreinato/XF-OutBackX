@@ -1,10 +1,8 @@
 ﻿using OutBackX.Model;
 using OutBackX.Repository;
 using OutBackX.Util;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -38,7 +36,6 @@ namespace OutBackX.ViewModel
         #region Properties
 
         private EstabelecimentoRepository _estabelecimentoRepository;
-        private FavoritoUsuarioRepository _favoritoUsuarioRepository;
 
 
         private ObservableCollection<EstabelecimentoModel> estabelecimentoList = new ObservableCollection<EstabelecimentoModel>();
@@ -60,8 +57,8 @@ namespace OutBackX.ViewModel
         public Pin SelectedPin
         {
             get { return selectedPin; }
-            set 
-            { 
+            set
+            {
                 selectedPin = value;
                 OnPropertyChanged("SelectedPin");
             }
@@ -95,7 +92,7 @@ namespace OutBackX.ViewModel
         public bool ShowShare
         {
             get { return showShare; }
-            set 
+            set
             {
                 showShare = value;
                 OnPropertyChanged("ShowShare");
@@ -112,7 +109,7 @@ namespace OutBackX.ViewModel
 
         #region ICommand
         private ICommand _centralizarMapaCommand;
-        public ICommand CentralizarMapaCommand 
+        public ICommand CentralizarMapaCommand
         {
             get
             {
@@ -146,13 +143,13 @@ namespace OutBackX.ViewModel
                 return _mostrarEstabelecimentosCommand ?? (_mostrarEstabelecimentosCommand = new Command(async () => MostrarEstabelecimentos()));
             }
         }
-        
+
         private ICommand _compartilharCommand;
         public ICommand CompartilharCommand
         {
             get
             {
-                return _compartilharCommand ?? (_compartilharCommand  = new Command(async () => await CompartilharEstabelecimento()));
+                return _compartilharCommand ?? (_compartilharCommand = new Command(async () => await CompartilharEstabelecimento()));
             }
 
         }
@@ -198,7 +195,6 @@ namespace OutBackX.ViewModel
 
         private void MostrarEstabelecimentos()
         {
-           
             _estabelecimentoRepository = new EstabelecimentoRepository();
 
             List<EstabelecimentoModel> lista = _estabelecimentoRepository.GetList();
@@ -320,7 +316,7 @@ namespace OutBackX.ViewModel
 
         private async Task CompartilharEstabelecimento()
         {
-            if(selectedPin != null)
+            if (selectedPin != null)
             {
                 EstabelecimentoModel e = (EstabelecimentoModel)selectedPin.BindingContext;
                 if (e != null)
@@ -346,7 +342,7 @@ namespace OutBackX.ViewModel
                     });
                 }
             }
-            else 
+            else
             {
                 await _messageService.ShowAsync("Atenção", "Nenum local foi selecionado", "OK");
             }

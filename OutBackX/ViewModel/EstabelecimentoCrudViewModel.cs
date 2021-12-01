@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace OutBackX.ViewModel
 {
-    public class EstabelecimentoCrudViewModel : EstabelecimentoBaseViewModel
+    public class EstabelecimentoCrudViewModel : BaseViewModel
     {
         public FuncionarioModel funcionarioModel = new FuncionarioModel();
 

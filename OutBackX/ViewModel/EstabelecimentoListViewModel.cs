@@ -9,7 +9,7 @@ using Xamarin.Forms.Internals;
 
 namespace OutBackX.ViewModel
 {
-    public class EstabelecimentoListViewModel : EstabelecimentoBaseViewModel
+    public class EstabelecimentoListViewModel : BaseViewModel
     {
       
         public int IdFuncionarioModel { get; set; }

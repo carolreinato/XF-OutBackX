@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace OutBackX.ViewModel
 {
-    public class EstabelecimentoBaseViewModel: INotifyPropertyChanged
+    public class BaseViewModel: INotifyPropertyChanged
     {
         protected IMessageService _messageService;
 
@@ -32,7 +32,7 @@ namespace OutBackX.ViewModel
         }
         #endregion
         
-        public EstabelecimentoBaseViewModel()
+        public BaseViewModel()
         { 
             _messageService = DependencyService.Get<IMessageService>();
         }

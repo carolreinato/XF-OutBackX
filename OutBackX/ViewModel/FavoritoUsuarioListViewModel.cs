@@ -10,7 +10,7 @@ using Xamarin.Forms.Internals;
 
 namespace OutBackX.ViewModel
 {
-    public class FavoritoUsuarioListViewModel : EstabelecimentoBaseViewModel
+    public class FavoritoUsuarioListViewModel : BaseViewModel
     {
         #region Construtor
         public FavoritoUsuarioListViewModel()

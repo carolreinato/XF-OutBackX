@@ -13,7 +13,7 @@ using Xamarin.Forms.Internals;
 
 namespace OutBackX.ViewModel
 {
-    public class FavoritoUsuarioCrudViewModel : EstabelecimentoBaseViewModel
+    public class FavoritoUsuarioCrudViewModel : BaseViewModel
     {
         private EstabelecimentoModel estabelecimento = new EstabelecimentoModel();
         private readonly FavoritoUsuarioRepository _repository;

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:OutBackX.ViewModel"
     xmlns:ut="clr-namespace:OutBackX.Util"
-    x:Class="OutBackX.View.EstabelecimentoCadastrarPage"
+    x:Class="OutBackX.View.EstabelecimentoInsertPage"
     BackgroundColor="White">
 
     <ContentPage.BindingContext>

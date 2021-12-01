@@ -27,32 +27,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Config.cs" />
-    <Compile Remove="View\EstabelecimentoCadastrarPage.cs" />
+    <Compile Remove="View\EstabelecimentoInsertPage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\EstabelecimentoCadastrarPage.xaml.cs">
-      <DependentUpon>EstabelecimentoCadastrarPage.xaml</DependentUpon>
+    <Compile Update="View\EstabelecimentoInsertPage.xaml.cs">
+      <DependentUpon>EstabelecimentoInsertPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\EstabelecimentoMapPage.xaml.cs">
+      <DependentUpon>EstabelecimentoMapPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\UsuarioPage.xaml.cs">
       <DependentUpon>UsuarioPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\EstabelecimentoUsuarioPage.xaml.cs">
-      <DependentUpon>EstabelecimentoUsuarioPage.xaml</DependentUpon>
+    <Compile Update="View\EstabelecimentoUserPage.xaml.cs">
+      <DependentUpon>EstabelecimentoUserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\EstabelecimentoExcluirPage.xaml.cs">
-      <DependentUpon>EstabelecimentoExcluirPage.xaml</DependentUpon>
+    <Compile Update="View\EstabelecimentoDeletePage.xaml.cs">
+      <DependentUpon>EstabelecimentoDeletePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\EstabelecimentoAtualizarPage.xaml.cs">
-      <DependentUpon>EstabelecimentoAtualizarPage.xaml</DependentUpon>
+    <Compile Update="View\EstabelecimentoUpdatePage.xaml.cs">
+      <DependentUpon>EstabelecimentoUpdatePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\UsuarioEstabelecimentoFavoritoListarPage.xaml.cs">
-      <DependentUpon>UsuarioEstabelecimentoFavoritoListarPage.xaml</DependentUpon>
+    <Compile Update="View\UsuarioFavoritListPage.xaml.cs">
+      <DependentUpon>UsuarioFavoritListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\FuncionarioCadastrarPage.xaml.cs">
-      <DependentUpon>FuncionarioCadastrarPage.xaml</DependentUpon>
+    <Compile Update="View\FuncionarioInsertPage.xaml.cs">
+      <DependentUpon>FuncionarioInsertPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\FuncionarioEntrarPage.xaml.cs">
-      <DependentUpon>FuncionarioEntrarPage.xaml</DependentUpon>
+    <Compile Update="View\FuncionarioInitialPage.xaml.cs">
+      <DependentUpon>FuncionarioInitialPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
@@ -62,13 +65,13 @@
     <EmbeddedResource Update="View\EstabelecimentoListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EstabelecimentoMapaPage.xaml">
+    <EmbeddedResource Update="View\EstabelecimentoMapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\EstabelecimentoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\UsuarioEstabelecimentoFavoritoListarPage.xaml">
+    <EmbeddedResource Update="View\UsuarioFavoritListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

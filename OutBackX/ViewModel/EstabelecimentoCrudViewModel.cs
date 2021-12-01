@@ -164,7 +164,7 @@ namespace OutBackX.ViewModel
         }
         private void ExibirDetalhesExcluir(EstabelecimentoModel estabelecimento)
         {
-            Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoExcluirPage(estabelecimento));
+            Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoDeletePage(estabelecimento));
         } 
     }
 }

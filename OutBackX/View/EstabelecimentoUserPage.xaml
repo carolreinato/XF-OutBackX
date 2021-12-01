@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:OutBackX.ViewModel"
     xmlns:ut="clr-namespace:OutBackX.Util"
-    x:Class="OutBackX.View.EstabelecimentoUsuarioPage"
+    x:Class="OutBackX.View.EstabelecimentoUserPage"
     BackgroundImage="outback01.jpg">
 
     <ContentPage.BindingContext>

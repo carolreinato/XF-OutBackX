@@ -15,7 +15,7 @@ using Xamarin.Forms.GoogleMaps;
 
 namespace OutBackX.ViewModel
 {
-    public class EstabelecimentoMapaViewModel : INotifyPropertyChanged
+    public class EstabelecimentoMapViewModel : INotifyPropertyChanged
     {
         private static Geocoder geocoder;
         public const double DistanciaListaEstabelecimentos = 10;
@@ -155,11 +155,11 @@ namespace OutBackX.ViewModel
             }
             return geocoder;
         }
-        public EstabelecimentoMapaViewModel()
+        public EstabelecimentoMapViewModel()
         {
             _messageService = DependencyService.Get<IMessageService>();
         }
-        public EstabelecimentoMapaViewModel(Xamarin.Forms.GoogleMaps.Map mapa)
+        public EstabelecimentoMapViewModel(Xamarin.Forms.GoogleMaps.Map mapa)
         {
             _messageService = DependencyService.Get<IMessageService>();
             _mapa = mapa;
@@ -168,7 +168,7 @@ namespace OutBackX.ViewModel
             CentralizarMapaCommand.Execute(null);
         }
 
-        public EstabelecimentoMapaViewModel(Xamarin.Forms.GoogleMaps.Map mapa, EstabelecimentoModel estabelecimento)
+        public EstabelecimentoMapViewModel(Xamarin.Forms.GoogleMaps.Map mapa, EstabelecimentoModel estabelecimento)
         {
             _messageService = DependencyService.Get<IMessageService>();
             _mapa = mapa;

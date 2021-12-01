@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 namespace OutBackX.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EstabelecimentoExcluirPage : ContentPage
+    public partial class EstabelecimentoUpdatePage : ContentPage
     {
-        public EstabelecimentoExcluirPage(EstabelecimentoModel estabelecimento)
+        public EstabelecimentoUpdatePage(EstabelecimentoModel estabelecimento)
         {
             InitializeComponent();
 
@@ -21,17 +21,17 @@ namespace OutBackX.View
 
             dadosEstabelecimento.IsVisible = true;
 
-            CarregaEstabelecimento(estabelecimento);            
+            CarregaEstabelecimento(estabelecimento);
         }
 
-        public EstabelecimentoExcluirPage()
+        public EstabelecimentoUpdatePage()
         {
             InitializeComponent();
 
-            BindingContext = new EstabelecimentoListViewModel("paginaExcluir");
+            BindingContext = new EstabelecimentoListViewModel("paginaAtualizar");            
         }
 
-        private void CarregaEstabelecimento(EstabelecimentoModel estabelecimento)
+        private void CarregaEstabelecimento (EstabelecimentoModel estabelecimento)
         {
             nomeEstabelecimento.Text = estabelecimento.NomeEstabelecimento;
             cepEstabelecimento.Text = estabelecimento.CEPEstabelecimento;

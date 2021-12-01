@@ -115,7 +115,7 @@ namespace OutBackX.ViewModel
                     mensagem = "Todos os campos são obrigatórios!";
                 }
                 Application.Current.MainPage.DisplayAlert("Atenção", mensagem, "OK");
-                Application.Current.MainPage.Navigation.PushAsync(new FuncionarioEntrarPage());
+                Application.Current.MainPage.Navigation.PushAsync(new FuncionarioInitialPage());
             });
         }
     }

@@ -105,7 +105,7 @@ namespace OutBackX.ViewModel
             {
                 return _showMapCommand ?? (_showMapCommand = new Command<EstabelecimentoModel>(async (estabelecimento) =>
                 {
-                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoMapaPage(estabelecimento));
+                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoMapPage(estabelecimento));
                 }));
             }
         }
@@ -133,11 +133,11 @@ namespace OutBackX.ViewModel
             switch (PaginaOrigem)
             {
                 case "paginaAtualizar" :
-                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoAtualizarPage(estabelecimento));
+                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoUpdatePage(estabelecimento));
                     break;
 
                 case "paginaExcluir":
-                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoExcluirPage(estabelecimento));
+                    await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoDeletePage(estabelecimento));
                     break;
 
                 case "UsuarioPage":
@@ -145,7 +145,7 @@ namespace OutBackX.ViewModel
                     await favoritoUsuarioCrudViewModel.Salvar(estabelecimento);
                     break;
                 case "UsuarioEstabelecimentoFavoritoListarPage":
-                    await Application.Current.MainPage.Navigation.PushAsync(new UsuarioEstabelecimentoFavoritoListarPage(estabelecimento));
+                    await Application.Current.MainPage.Navigation.PushAsync(new UsuarioFavoritListPage(estabelecimento));
                     break;
             }
         }

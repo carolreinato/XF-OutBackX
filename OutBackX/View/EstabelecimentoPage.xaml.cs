@@ -20,10 +20,10 @@ namespace OutBackX.View
 
             MainMenuItems = new List<MainMenuItem>()
             {
-                new MainMenuItem() { Title = "Cadastrar Estabelecimento", Icon = "plus.png", TargetType = typeof(EstabelecimentoCadastrarPage) },
-                new MainMenuItem() { Title = "Atualizar Estabelecimento", Icon = "editar.png", TargetType = typeof(EstabelecimentoAtualizarPage) },
-                new MainMenuItem() { Title = "Excluir Estabelecimento", Icon = "trash.png", TargetType = typeof(EstabelecimentoExcluirPage) },
-                new MainMenuItem() { Title = "Mapa", Icon = "map.png", TargetType = typeof(EstabelecimentoMapaPage) }
+                new MainMenuItem() { Title = "Cadastrar Estabelecimento", Icon = "plus.png", TargetType = typeof(EstabelecimentoInsertPage) },
+                new MainMenuItem() { Title = "Atualizar Estabelecimento", Icon = "editar.png", TargetType = typeof(EstabelecimentoUpdatePage) },
+                new MainMenuItem() { Title = "Excluir Estabelecimento", Icon = "trash.png", TargetType = typeof(EstabelecimentoDeletePage) },
+                new MainMenuItem() { Title = "Mapa", Icon = "map.png", TargetType = typeof(EstabelecimentoMapPage) }
             };
 
             Detail = new NavigationPage(new EstabelecimentoListPage("paginaPrincipal"));
@@ -39,19 +39,19 @@ namespace OutBackX.View
             {
                 if (item.Title.Equals("Cadastrar Estabelecimento"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoCadastrarPage());
+                    Detail = new NavigationPage(new EstabelecimentoInsertPage());
                 }
                 else if (item.Title.Equals("Atualizar Estabelecimento"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoAtualizarPage());
+                    Detail = new NavigationPage(new EstabelecimentoUpdatePage());
                 }
                 else if (item.Title.Equals("Excluir Estabelecimento"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoExcluirPage());
+                    Detail = new NavigationPage(new EstabelecimentoDeletePage());
                 }
                 else if (item.Title.Equals("Mapa"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoMapaPage());
+                    Detail = new NavigationPage(new EstabelecimentoMapPage());
                 }
                 MenuListView.SelectedItem = null;
                 IsPresented = false;

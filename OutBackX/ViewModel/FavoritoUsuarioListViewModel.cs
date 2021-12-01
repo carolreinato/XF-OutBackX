@@ -84,7 +84,7 @@ namespace OutBackX.ViewModel
             {
                 return new Command(async () =>
                 {
-                    await Application.Current.MainPage.Navigation.PushAsync(new UsuarioEstabelecimentoFavoritoListarPage());
+                    await Application.Current.MainPage.Navigation.PushAsync(new UsuarioFavoritListPage());
                 });
 
             }
@@ -123,7 +123,7 @@ namespace OutBackX.ViewModel
                     EstabelecimentoModel e = favorito.EstabelecimentoRef ?? (_repositoryEstabelecimento.Get(favorito.IdEstabelecimento));
                     if (e != null)
                     {
-                        await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoMapaPage(e));
+                        await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoMapPage(e));
                     }
                 }));
             }
@@ -136,7 +136,7 @@ namespace OutBackX.ViewModel
         private async void ExibirDetalhes(FavoritoUsuarioModel favoritoUsuarioModel)
         {
             var estabelecimento = _repositoryEstabelecimento.Get(favoritoUsuarioModel.IdEstabelecimento);
-            await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoAtualizarPage(estabelecimento));
+            await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoUpdatePage(estabelecimento));
         }
 
         public void ListarDados()

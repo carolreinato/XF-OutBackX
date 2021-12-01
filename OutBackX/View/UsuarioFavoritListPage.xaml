@@ -4,7 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:OutBackX.ViewModel"
-    x:Class="OutBackX.View.UsuarioEstabelecimentoFavoritoListarPage" 
+    x:Class="OutBackX.View.UsuarioFavoritListPage" 
     Title="Meus Favoritos">
 
     <ContentPage.BindingContext>

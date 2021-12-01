@@ -1,21 +1,18 @@
 ﻿using OutBackX.Model;
 using OutBackX.ViewModel;
-using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace OutBackX.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EstabelecimentoAtualizarPage : ContentPage
+    public partial class UsuarioFavoritListPage : ContentPage
     {
-        public EstabelecimentoAtualizarPage(EstabelecimentoModel estabelecimento)
+        public UsuarioFavoritListPage(EstabelecimentoModel estabelecimento)
         {
             InitializeComponent();
 
-            BindingContext = new EstabelecimentoCrudViewModel(estabelecimento);
+            BindingContext = new FavoritoUsuarioCrudViewModel(estabelecimento);
 
             pesquisaEstabelecimento.IsVisible = false;
 
@@ -23,15 +20,14 @@ namespace OutBackX.View
 
             CarregaEstabelecimento(estabelecimento);
         }
-
-        public EstabelecimentoAtualizarPage()
+        public UsuarioFavoritListPage()
         {
             InitializeComponent();
 
-            BindingContext = new EstabelecimentoListViewModel("paginaAtualizar");            
+            BindingContext = new FavoritoUsuarioListViewModel();
         }
 
-        private void CarregaEstabelecimento (EstabelecimentoModel estabelecimento)
+        private void CarregaEstabelecimento(EstabelecimentoModel estabelecimento)
         {
             nomeEstabelecimento.Text = estabelecimento.NomeEstabelecimento;
             cepEstabelecimento.Text = estabelecimento.CEPEstabelecimento;

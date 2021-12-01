@@ -8,13 +8,13 @@ using Xamarin.Forms.Xaml;
 namespace OutBackX.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EstabelecimentoUsuarioPage : ContentPage
+    public partial class FuncionarioInsertPage : ContentPage
     {
-        public EstabelecimentoUsuarioPage(int IdEstabelecimento)
+        public FuncionarioInsertPage()
         {
             InitializeComponent();
 
-            //BindingContext = new EstabelecimentoCrudViewModel(IdEstabelecimento);
-        }
+            BindingContext = new FuncionarioViewModel();
+        }       
     }
 }

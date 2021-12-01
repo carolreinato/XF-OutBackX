@@ -1,30 +1,34 @@
 ﻿using OutBackX.Model;
 using OutBackX.ViewModel;
+using System;
+using System.Collections.Generic;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace OutBackX.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UsuarioEstabelecimentoFavoritoListarPage : ContentPage
+    public partial class EstabelecimentoDeletePage : ContentPage
     {
-        public UsuarioEstabelecimentoFavoritoListarPage(EstabelecimentoModel estabelecimento)
+        public EstabelecimentoDeletePage(EstabelecimentoModel estabelecimento)
         {
             InitializeComponent();
 
-            BindingContext = new FavoritoUsuarioCrudViewModel(estabelecimento);
+            BindingContext = new EstabelecimentoCrudViewModel(estabelecimento);
 
             pesquisaEstabelecimento.IsVisible = false;
 
             dadosEstabelecimento.IsVisible = true;
 
-            CarregaEstabelecimento(estabelecimento);
+            CarregaEstabelecimento(estabelecimento);            
         }
-        public UsuarioEstabelecimentoFavoritoListarPage()
+
+        public EstabelecimentoDeletePage()
         {
             InitializeComponent();
 
-            BindingContext = new FavoritoUsuarioListViewModel();
+            BindingContext = new EstabelecimentoListViewModel("paginaExcluir");
         }
 
         private void CarregaEstabelecimento(EstabelecimentoModel estabelecimento)

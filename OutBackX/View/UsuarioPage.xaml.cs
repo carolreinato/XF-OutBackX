@@ -18,8 +18,8 @@ namespace OutBackX.View
 
             MainMenuItems = new List<MainMenuItem>()
             {
-                new MainMenuItem() { Title = "Favoritos", Icon = "favourite.png", TargetType = typeof(UsuarioEstabelecimentoFavoritoListarPage) },
-                new MainMenuItem() { Title = "Próximos a mim", Icon = "location.png", TargetType = typeof(EstabelecimentoMapaPage) }
+                new MainMenuItem() { Title = "Favoritos", Icon = "favourite.png", TargetType = typeof(UsuarioFavoritListPage) },
+                new MainMenuItem() { Title = "Próximos a mim", Icon = "location.png", TargetType = typeof(EstabelecimentoMapPage) }
             };
 
             Detail = new NavigationPage(new EstabelecimentoListPage("UsuarioPage"));
@@ -35,11 +35,11 @@ namespace OutBackX.View
             {
                 if (item.Title.Equals("Favoritos"))
                 {
-                    Detail = new NavigationPage(new UsuarioEstabelecimentoFavoritoListarPage());
+                    Detail = new NavigationPage(new UsuarioFavoritListPage());
                 }
                 else if (item.Title.Equals("Próximos a mim"))
                 {
-                    Detail = new NavigationPage(new EstabelecimentoMapaPage());
+                    Detail = new NavigationPage(new EstabelecimentoMapPage());
                 }
 
                 MenuListView.SelectedItem = null;

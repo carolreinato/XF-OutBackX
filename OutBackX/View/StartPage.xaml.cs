@@ -11,7 +11,7 @@ namespace OutBackX.View
 
         private async void PressedFuncionario(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new FuncionarioEntrarPage());
+            await Navigation.PushAsync(new FuncionarioInitialPage());
         }
 
         private async void PressedNaoFuncionario(object sender, System.EventArgs e)

@@ -7,9 +7,9 @@ using Xamarin.Forms.Xaml;
 namespace OutBackX.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FuncionarioEntrarPage : ContentPage
+    public partial class FuncionarioInitialPage : ContentPage
     {
-        public FuncionarioEntrarPage()
+        public FuncionarioInitialPage()
         {
             InitializeComponent();
 
@@ -17,7 +17,7 @@ namespace OutBackX.View
         }
         public void PressedCadastrarFuncionario(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new FuncionarioCadastrarPage());
+            Navigation.PushAsync(new FuncionarioInsertPage());
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using OutBackX.Model;
-using OutBackX.ViewModel;
+﻿using OutBackX.ViewModel;
 using System;
 using System.Collections.Generic;
 
@@ -9,13 +8,11 @@ using Xamarin.Forms.Xaml;
 namespace OutBackX.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EstabelecimentoCadastrarPage : ContentPage
+    public partial class EstabelecimentoUserPage : ContentPage
     {
-        public EstabelecimentoCadastrarPage()
+        public EstabelecimentoUserPage()
         {
             InitializeComponent();
-
-            BindingContext = new EstabelecimentoCrudViewModel();
         }
     }
 }

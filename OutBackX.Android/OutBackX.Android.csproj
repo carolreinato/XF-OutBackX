@@ -136,12 +136,6 @@
     <AndroidResource Include="Resources\drawable\iconsMais50.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\iconsAmerica50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\iconsAmerica38.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\share.png" />
   </ItemGroup>
   <ItemGroup>

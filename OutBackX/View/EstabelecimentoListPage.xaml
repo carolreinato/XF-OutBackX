@@ -28,7 +28,7 @@
                   SeparatorColor="Black"
                   IsPullToRefreshEnabled="True"
                   ItemsSource="{Binding EstabelecimentoList}"
-                  SelectedItem="{Binding SelectedEstabelecimento, Mode=TwoWay}" 
+                  SelectedItem="{Binding EstabelecimentoSelected, Mode=TwoWay}" 
                   Margin="5">
             <ListView.ItemTemplate>
                 <DataTemplate>

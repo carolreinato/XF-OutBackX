@@ -46,7 +46,7 @@ namespace OutBackX.ViewModel
         }
 
         private EstabelecimentoModel _selectedEstabelecimento;
-        public EstabelecimentoModel SelectedEstabelecimento
+        public EstabelecimentoModel EstabelecimentoSelected
         {
             get => _selectedEstabelecimento;
             set
@@ -55,7 +55,7 @@ namespace OutBackX.ViewModel
                 {
                     _selectedEstabelecimento = value;
 
-                    NotifyPropertyChanged("SelectedEstabelecimento");
+                    NotifyPropertyChanged("EstabelecimentoSelected");
 
                     ExibirDetalhesExcluir(value);
                 }

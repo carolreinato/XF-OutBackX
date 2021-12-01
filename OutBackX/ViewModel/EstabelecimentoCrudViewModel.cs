@@ -118,9 +118,6 @@ namespace OutBackX.ViewModel
 
             if (res)
             {
-                var currentLocation = await Geolocation.GetLocationAsync();
-                estabelecimento.CoordenadaX = currentLocation.Latitude;
-                estabelecimento.CoordenadaY = currentLocation.Longitude;
                 _estabelecimentoRepository.Insert(estabelecimento);
 
                 await Application.Current.MainPage.Navigation.PushAsync(new EstabelecimentoPage());
